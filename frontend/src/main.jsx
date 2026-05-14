@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
 import { AuthProvider } from './context/AuthContext.jsx'
 import { NotificationsProvider } from './context/NotificationsContext.jsx'
+import './i18n'  // bootstraps i18next + sets <html dir/lang>
 import './styles/index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(

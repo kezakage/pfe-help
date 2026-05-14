@@ -1,0 +1,13 @@
+# Tells Grafana to load every JSON dashboard under /var/lib/grafana/dashboards.
+apiVersion: 1
+
+providers:
+  - name: "patrimoinehub"
+    orgId: 1
+    folder: "PatrimoineHub"
+    type: file
+    disableDeletion: false
+    editable: true
+    updateIntervalSeconds: 30
+    options:
+      path: /var/lib/grafana/dashboards

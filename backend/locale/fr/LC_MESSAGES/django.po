@@ -1,0 +1,313 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-09 01:41+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+#: apps/accounts/models.py:20
+msgid "The email must be set"
+msgstr "L'adresse e-mail est obligatoire."
+
+#: apps/accounts/models.py:38
+msgid "Superuser must have is_staff=True."
+msgstr "Le super-utilisateur doit avoir is_staff=True."
+
+#: apps/accounts/models.py:40
+msgid "Superuser must have is_superuser=True."
+msgstr "Le super-utilisateur doit avoir is_superuser=True."
+
+#: apps/accounts/models.py:71
+msgid "Administrator"
+msgstr "Administrateur"
+
+#: apps/accounts/models.py:72
+msgid "Validated expert"
+msgstr "Expert validé"
+
+#: apps/accounts/models.py:73
+msgid "Guest researcher"
+msgstr "Chercheur invité"
+
+#: apps/accounts/models.py:74
+msgid "Visitor"
+msgstr "Visiteur"
+
+#: apps/accounts/models.py:77
+msgid "Pending validation"
+msgstr "En attente de validation"
+
+#: apps/accounts/models.py:78
+msgid "Active"
+msgstr "Actif"
+
+#: apps/accounts/models.py:79
+msgid "Rejected"
+msgstr "Rejeté"
+
+#: apps/accounts/models.py:82
+msgid "email address"
+msgstr "adresse e-mail"
+
+#: apps/chatbot/models.py:28
+msgid "Heritage resource"
+msgstr "Ressource patrimoniale"
+
+#: apps/chatbot/models.py:29
+msgid "Project"
+msgstr "Projet"
+
+#: apps/chatbot/models.py:30
+msgid "Page version"
+msgstr "Version de page"
+
+#: apps/chatbot/models.py:95
+msgid "User"
+msgstr "Utilisateur"
+
+#: apps/chatbot/models.py:96
+msgid "Assistant"
+msgstr "Assistant"
+
+#: apps/chatbot/models.py:97 apps/notifications/models.py:18
+msgid "System"
+msgstr "Système"
+
+#: apps/discussions/models.py:15
+msgid "Open"
+msgstr "Ouvert"
+
+#: apps/discussions/models.py:16
+msgid "Resolved"
+msgstr "Résolu"
+
+#: apps/discussions/models.py:17 apps/heritage/models.py:81
+msgid "Archived"
+msgstr "Archivé"
+
+#: apps/discussions/models.py:20
+msgid "General"
+msgstr "Général"
+
+#: apps/discussions/models.py:21
+msgid "Editorial conflict"
+msgstr "Conflit éditorial"
+
+#: apps/discussions/models.py:22
+msgid "Review"
+msgstr "Révision"
+
+#: apps/discussions/models.py:88
+msgid "Approve"
+msgstr "Approuver"
+
+#: apps/discussions/models.py:89
+msgid "Reject"
+msgstr "Rejeter"
+
+#: apps/discussions/models.py:90
+msgid "Abstain"
+msgstr "S'abstenir"
+
+#: apps/exports/models.py:16
+msgid "PDF"
+msgstr "PDF"
+
+#: apps/exports/models.py:17
+msgid "ZIP archive"
+msgstr "Archive ZIP"
+
+#: apps/exports/models.py:18
+msgid "GeoJSON"
+msgstr "GeoJSON"
+
+#: apps/exports/models.py:19
+msgid "CSV"
+msgstr "CSV"
+
+#: apps/exports/models.py:22 apps/media/models.py:55
+msgid "Pending"
+msgstr "En attente"
+
+#: apps/exports/models.py:23
+msgid "Processing"
+msgstr "En cours de traitement"
+
+#: apps/exports/models.py:24 apps/media/models.py:56
+msgid "Done"
+msgstr "Terminé"
+
+#: apps/exports/models.py:25 apps/media/models.py:57
+msgid "Failed"
+msgstr "Échec"
+
+#: apps/heritage/models.py:17
+msgid "Prehistoric"
+msgstr "Préhistorique"
+
+#: apps/heritage/models.py:18
+msgid "Numidian"
+msgstr "Numide"
+
+#: apps/heritage/models.py:19
+msgid "Roman"
+msgstr "Romain"
+
+#: apps/heritage/models.py:20
+msgid "Medieval"
+msgstr "Médiéval"
+
+#: apps/heritage/models.py:21
+msgid "Ottoman"
+msgstr "Ottoman"
+
+#: apps/heritage/models.py:22
+msgid "Colonial"
+msgstr "Colonial"
+
+#: apps/heritage/models.py:23
+msgid "Contemporary"
+msgstr "Contemporain"
+
+#: apps/heritage/models.py:26
+msgid "Mosque"
+msgstr "Mosquée"
+
+#: apps/heritage/models.py:27
+msgid "Medersa"
+msgstr "Médersa"
+
+#: apps/heritage/models.py:28
+msgid "Casbah / Medina"
+msgstr "Casbah / Médina"
+
+#: apps/heritage/models.py:29
+msgid "Palace"
+msgstr "Palais"
+
+#: apps/heritage/models.py:30
+msgid "Fortification"
+msgstr "Fortification"
+
+#: apps/heritage/models.py:31
+msgid "Church"
+msgstr "Église"
+
+#: apps/heritage/models.py:32
+msgid "Synagogue"
+msgstr "Synagogue"
+
+#: apps/heritage/models.py:33
+msgid "Mausoleum"
+msgstr "Mausolée"
+
+#: apps/heritage/models.py:34
+msgid "Traditional house"
+msgstr "Maison traditionnelle"
+
+#: apps/heritage/models.py:35
+msgid "Archaeological site"
+msgstr "Site archéologique"
+
+#: apps/heritage/models.py:36
+msgid "Other"
+msgstr "Autre"
+
+#: apps/heritage/models.py:39
+msgid "UNESCO World Heritage"
+msgstr "Patrimoine mondial UNESCO"
+
+#: apps/heritage/models.py:40
+msgid "National"
+msgstr "National"
+
+#: apps/heritage/models.py:41
+msgid "Regional"
+msgstr "Régional"
+
+#: apps/heritage/models.py:42
+msgid "Unclassified"
+msgstr "Non classé"
+
+#: apps/heritage/models.py:78 apps/pages/models.py:46
+msgid "Draft"
+msgstr "Brouillon"
+
+#: apps/heritage/models.py:79
+msgid "In progress"
+msgstr "En cours"
+
+#: apps/heritage/models.py:80 apps/pages/models.py:47
+msgid "Published"
+msgstr "Publié"
+
+#: apps/heritage/models.py:117
+msgid "Project lead"
+msgstr "Chef de projet"
+
+#: apps/heritage/models.py:118
+msgid "Contributor"
+msgstr "Contributeur"
+
+#: apps/heritage/models.py:119
+msgid "Reviewer"
+msgstr "Réviseur"
+
+#: apps/media/models.py:18
+msgid "Image"
+msgstr "Image"
+
+#: apps/media/models.py:19
+msgid "Video"
+msgstr "Vidéo"
+
+#: apps/media/models.py:20
+msgid "Document"
+msgstr "Document"
+
+#: apps/media/models.py:21
+msgid "3D model"
+msgstr "Modèle 3D"
+
+#: apps/media/models.py:58
+msgid "Skipped"
+msgstr "Ignoré"
+
+#: apps/notifications/models.py:11
+msgid "New discussion message"
+msgstr "Nouveau message de discussion"
+
+#: apps/notifications/models.py:12
+msgid "Page version published"
+msgstr "Version de page publiée"
+
+#: apps/notifications/models.py:13
+msgid "Annotation validated"
+msgstr "Annotation validée"
+
+#: apps/notifications/models.py:14
+msgid "Export ready"
+msgstr "Export prêt"
+
+#: apps/notifications/models.py:15
+msgid "Expert account validated"
+msgstr "Compte expert validé"
+
+#: apps/notifications/models.py:16
+msgid "Expert account rejected"
+msgstr "Compte expert rejeté"
+
+#: apps/notifications/models.py:17
+msgid "Project invitation"
+msgstr "Invitation au projet"

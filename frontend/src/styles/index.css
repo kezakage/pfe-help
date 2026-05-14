@@ -1,3 +1,5 @@
+@import 'leaflet/dist/leaflet.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -54,3 +56,41 @@
 .scrollbar-thin::-webkit-scrollbar { width: 8px; height: 8px; }
 .scrollbar-thin::-webkit-scrollbar-thumb { background: #dbb682; border-radius: 8px; }
 .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+
+/* ----- Quill / RichEditor theming -------------------------------------- */
+.quill-shell .ql-toolbar {
+  border: 0;
+  border-bottom: 1px solid theme('colors.sand.200');
+  background: theme('colors.sand.50');
+}
+.quill-shell .ql-container {
+  border: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 160px;
+  font-size: 0.95rem;
+}
+.quill-shell .ql-editor {
+  min-height: 160px;
+  color: theme('colors.sand.900');
+}
+.quill-shell .ql-editor.ql-blank::before {
+  color: theme('colors.sand.400');
+  font-style: normal;
+}
+/* Render saved HTML in the read-only project preview using the same tone */
+.prose-sand h1, .prose-sand h2, .prose-sand h3 {
+  color: theme('colors.sand.900');
+  font-family: theme('fontFamily.display', 'serif');
+}
+.prose-sand p { margin: 0.5rem 0; line-height: 1.6; }
+.prose-sand ul { list-style: disc; padding-inline-start: 1.25rem; }
+.prose-sand ol { list-style: decimal; padding-inline-start: 1.25rem; }
+.prose-sand blockquote {
+  border-inline-start: 3px solid theme('colors.terracotta.300');
+  padding-inline-start: 0.75rem;
+  color: theme('colors.sand.700');
+  font-style: italic;
+  margin: 0.75rem 0;
+}
+.prose-sand a { color: theme('colors.terracotta.700'); text-decoration: underline; }
+[dir="rtl"] .quill-shell .ql-editor { text-align: right; }

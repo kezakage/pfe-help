@@ -1,0 +1,74 @@
+[
+  {
+    "model": "accounts.discipline",
+    "pk": 1,
+    "fields": {
+      "name_fr": "Architecture",
+      "name_ar": "العمارة",
+      "color_hex": "#C2410C"
+    }
+  },
+  {
+    "model": "accounts.discipline",
+    "pk": 2,
+    "fields": {
+      "name_fr": "Histoire",
+      "name_ar": "التاريخ",
+      "color_hex": "#92400E"
+    }
+  },
+  {
+    "model": "accounts.discipline",
+    "pk": 3,
+    "fields": {
+      "name_fr": "Archéologie",
+      "name_ar": "الآثار",
+      "color_hex": "#78350F"
+    }
+  },
+  {
+    "model": "accounts.discipline",
+    "pk": 4,
+    "fields": {
+      "name_fr": "Anthropologie",
+      "name_ar": "الأنثروبولوجيا",
+      "color_hex": "#0F766E"
+    }
+  },
+  {
+    "model": "accounts.discipline",
+    "pk": 5,
+    "fields": {
+      "name_fr": "Conservation & Restauration",
+      "name_ar": "الحفظ والترميم",
+      "color_hex": "#1D4ED8"
+    }
+  },
+  {
+    "model": "accounts.discipline",
+    "pk": 6,
+    "fields": {
+      "name_fr": "Urbanisme",
+      "name_ar": "التخطيط العمراني",
+      "color_hex": "#6D28D9"
+    }
+  },
+  {
+    "model": "accounts.discipline",
+    "pk": 7,
+    "fields": {
+      "name_fr": "Épigraphie",
+      "name_ar": "علم الكتابات",
+      "color_hex": "#BE185D"
+    }
+  },
+  {
+    "model": "accounts.discipline",
+    "pk": 8,
+    "fields": {
+      "name_fr": "Arts décoratifs",
+      "name_ar": "الفنون الزخرفية",
+      "color_hex": "#B45309"
+    }
+  }
+]

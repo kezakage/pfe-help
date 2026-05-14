@@ -36,3 +36,8 @@ desktop.ini
 .agents/
 SKILL.md
 skills-lock.json
+*.md
+
+# Celery
+celerybeat-schedule
+celerybeat-schedule.*

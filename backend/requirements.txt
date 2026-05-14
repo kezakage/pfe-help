@@ -1,0 +1,66 @@
+# Core
+Django==5.0.6
+djangorestframework==3.15.1
+django-filter==24.2
+django-cors-headers==4.3.1
+
+# Auth
+djangorestframework-simplejwt==5.3.1
+django-guardian==2.4.0
+
+# Social auth (OAuth2 / SSO) — django-allauth handles the provider dance,
+# dj-rest-auth wraps it with REST endpoints that mint our SimpleJWT pair.
+django-allauth==0.63.6
+dj-rest-auth==6.0.0
+
+# DB & GIS
+psycopg[binary]==3.1.19
+# PostGIS support comes built-in via django.contrib.gis
+
+# Async / Realtime
+channels==4.1.0
+channels-redis==4.2.0
+daphne==4.1.2
+
+# Celery & Cache
+celery==5.4.0
+redis==5.0.4
+django-redis==5.4.0
+
+# Media / Storage
+django-storages==1.14.3
+boto3==1.34.106
+Pillow==10.3.0
+
+# API docs
+drf-spectacular==0.27.2
+
+# Search — Elasticsearch
+django-elasticsearch-dsl==8.0
+elasticsearch-dsl==8.13.1
+elasticsearch==8.13.2
+
+# PDF export — WeasyPrint produces PDF/A-1 from HTML/CSS
+WeasyPrint==62.3
+pydyf==0.10.0
+pikepdf==9.1.1
+
+# Chatbot RAG — pgvector storage + sentence-transformers embeddings + Anthropic
+pgvector==0.3.6
+sentence-transformers==3.0.1
+anthropic==0.34.2
+
+# Static files in production — WhiteNoise serves /static/ from the WSGI/ASGI
+# process so we don't need a separate nginx in front of Daphne.
+whitenoise==6.7.0
+
+# Observability — Prometheus exporter for Django views/DB/cache
+django-prometheus==2.3.1
+
+# Dev / Quality
+python-dotenv==1.0.1
+factory-boy==3.3.0
+ipython==8.24.0
+pytest==8.2.2
+pytest-django==4.8.0
+pytest-asyncio==0.23.7

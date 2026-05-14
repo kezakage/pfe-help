@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>{{ project.title }} — PatrimoineHub</title>
+
+  {% comment %}
+  Standard meta — WeasyPrint maps these to PDF Info + XMP automatically.
+  The remaining Dublin Core terms are injected post-render by pikepdf.
+  {% endcomment %}
+  <meta name="author" content="{{ project.created_by.full_name }}">
+  <meta name="description" content="{{ project.description|truncatewords:40 }}">
+  <meta name="keywords" content="{{ resource.name_fr }}, {{ resource.wilaya }}, {{ resource.get_period_display }}, {{ resource.get_architectural_type_display }}, patrimoine algérien">
+  <meta name="generator" content="PatrimoineHub">
+  <meta name="dcterms.created" content="{{ project.created_at|date:'c' }}">
+  <meta name="dcterms.modified" content="{{ project.updated_at|date:'c' }}">
+
+  <style>{{ stylesheet|safe }}</style>
+</head>
+<body>
+
+{# ───── COVER ───── #}
+<section class="cover">
+  <div class="cover-band"></div>
+  <div class="cover-stamp">
+    <span class="cover-stamp-text">PatrimoineHub</span>
+  </div>
+  <h1 class="cover-title">{{ resource.name_fr }}</h1>
+  {% if resource.name_ar %}
+    <h2 class="cover-title-ar" dir="rtl">{{ resource.name_ar }}</h2>
+  {% endif %}
+  <p class="cover-subtitle">{{ project.title }}</p>
+
+  <table class="cover-meta">
+    <tr><th>Wilaya</th><td>{{ resource.wilaya }}{% if resource.commune %}, {{ resource.commune }}{% endif %}</td></tr>
+    <tr><th>Période</th><td>{{ resource.get_period_display }}</td></tr>
+    <tr><th>Type</th><td>{{ resource.get_architectural_type_display }}</td></tr>
+    <tr><th>Classement</th><td class="badge-{{ resource.classification_level }}">{{ resource.get_classification_level_display }}</td></tr>
+    {% if resource.geo_point %}
+      <tr><th>Coordonnées</th><td>{{ resource.geo_point.y|floatformat:4 }}°N, {{ resource.geo_point.x|floatformat:4 }}°E</td></tr>
+    {% endif %}
+  </table>
+
+  <div class="cover-footer">
+    <div>Document généré le {{ generated_at|date:'d F Y' }}</div>
+    <div>Référence : patrimoinehub:project:{{ project.id }}</div>
+  </div>
+</section>
+
+{# ───── CONTRIBUTORS ───── #}
+<section class="contributors">
+  <h2>Équipe de documentation</h2>
+  <ul>
+    {% for m in members %}
+      <li>
+        <span class="role role-{{ m.project_role }}">{{ m.get_project_role_display }}</span>
+        <strong>{{ m.user.full_name }}</strong>
+        {% if m.user.institution_name %} — <em>{{ m.user.institution_name }}</em>{% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</section>
+
+{# ───── PAGES ───── #}
+{% for page in pages %}
+  <section class="page-section">
+    <h2 class="page-title">{{ forloop.counter }}. {{ page.title }}</h2>
+    {% if page.html_body %}
+      {{ page.html_body|safe }}
+    {% else %}
+      <p class="empty">Section sans contenu.</p>
+    {% endif %}
+  </section>
+{% endfor %}
+
+{# ───── GALLERY ───── #}
+{% if gallery %}
+  <section class="gallery">
+    <h2>Galerie iconographique</h2>
+    <div class="gallery-grid">
+      {% for img in gallery %}
+        <figure class="gallery-item">
+          <img src="{{ img.data_url }}" alt="{{ img.caption|default:'' }}"/>
+          {% if img.caption or img.credit %}
+            <figcaption>
+              {% if img.caption %}<span class="gallery-caption">{{ img.caption }}</span>{% endif %}
+              {% if img.credit %}<span class="gallery-credit">© {{ img.credit }}</span>{% endif %}
+            </figcaption>
+          {% endif %}
+        </figure>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
+
+{# ───── COLOPHON ───── #}
+<section class="colophon">
+  <h2>Colophon</h2>
+  <p>
+    Ce document est exporté depuis <strong>PatrimoineHub</strong>,
+    plateforme collaborative de documentation du patrimoine architectural algérien.
+  </p>
+  <p>
+    Format : <strong>PDF/A-1b</strong> (ISO 19005-1) — qualité archivistique,
+    métadonnées <strong>Dublin Core</strong> intégrées.
+  </p>
+  <p class="small">
+    Identifiant unique : patrimoinehub:project:{{ project.id }}<br>
+    Version exportée : mise à jour du {{ project.updated_at|date:'d F Y à H:i' }}<br>
+    Généré le {{ generated_at|date:'d F Y à H:i' }} ({{ generated_at|date:'T' }})
+  </p>
+</section>
+
+</body>
+</html>

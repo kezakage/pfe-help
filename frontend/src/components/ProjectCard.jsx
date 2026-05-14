@@ -22,8 +22,8 @@ export default function ProjectCard({ project, to }) {
         <div className="mt-3 flex flex-wrap gap-3 text-xs text-sand-600">
           <span className="flex items-center gap-1"><MapPin size={14}/>{project.region}</span>
           <span className="flex items-center gap-1"><Calendar size={14}/>{project.period}</span>
-          <span className="flex items-center gap-1"><ImageIcon size={14}/>{project.images}</span>
-          <span className="flex items-center gap-1"><Users size={14}/>{project.contributors.length}</span>
+          <span className="flex items-center gap-1"><ImageIcon size={14}/>{project.images ?? 0}</span>
+          <span className="flex items-center gap-1"><Users size={14}/>{project.contributors?.length ?? 0}</span>
         </div>
       </div>
     </Link>

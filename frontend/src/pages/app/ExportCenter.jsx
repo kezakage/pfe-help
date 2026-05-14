@@ -1,14 +1,54 @@
-import { useState } from 'react'
-import { FileText, Download, Printer, FileImage, Settings2 } from 'lucide-react'
-import { PROJECTS } from '../../data/projects.js'
+import { useEffect, useState } from 'react'
+import { FileText, Download, Printer, FileImage, Settings2, Loader2 } from 'lucide-react'
+import { heritage, exports_, mediaUrl } from '../../lib/api.js'
+import { projectToCard } from '../../data/projects.js'
 
 export default function ExportCenter() {
-  const [project, setProject] = useState(PROJECTS[0].id)
+  const [projects, setProjects] = useState([])
+  const [recent, setRecent] = useState([])
+  const [project, setProject] = useState('')
   const [format, setFormat] = useState('pdf')
   const [opts, setOpts] = useState({ images: true, annotations: true, sources: true, history: false })
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState(null)
   const set = (k) => () => setOpts({ ...opts, [k]: !opts[k] })
 
-  const p = PROJECTS.find(x => x.id === project)
+  const loadRecent = () => {
+    exports_.list()
+      .then((data) => setRecent(Array.isArray(data) ? data : (data.results || [])))
+      .catch(() => {})
+  }
+
+  useEffect(() => {
+    heritage.projects()
+      .then((data) => {
+        const list = (Array.isArray(data) ? data : (data.results || [])).map(projectToCard)
+        setProjects(list)
+        if (list.length > 0) setProject(list[0].id)
+      })
+      .catch((e) => setError(e.message))
+    loadRecent()
+  }, [])
+
+  const p = projects.find(x => x.id === project)
+
+  const generate = async () => {
+    if (!project) return
+    setSubmitting(true)
+    setError(null)
+    try {
+      await exports_.create({
+        project,
+        format,
+        options: opts,
+      })
+      loadRecent()
+    } catch (e) {
+      setError(e.data ? JSON.stringify(e.data) : e.message)
+    } finally {
+      setSubmitting(false)
+    }
+  }
 
   return (
     <div className="space-y-5">
@@ -22,7 +62,8 @@ export default function ExportCenter() {
           <div>
             <label className="label">Projet à exporter</label>
             <select className="input" value={project} onChange={e=>setProject(e.target.value)}>
-              {PROJECTS.map(x => <option key={x.id} value={x.id}>{x.name}</option>)}
+              {projects.length === 0 && <option value="">Aucun projet disponible</option>}
+              {projects.map(x => <option key={x.id} value={x.id}>{x.name}</option>)}
             </select>
           </div>
 
@@ -47,7 +88,7 @@ export default function ExportCenter() {
             <label className="label flex items-center gap-1"><Settings2 size={14}/>Contenu inclus</label>
             <div className="grid grid-cols-2 gap-2 mt-2">
               {[
-                { k:'images', l:'Galerie d\'images' },
+                { k:'images', l:"Galerie d'images" },
                 { k:'annotations', l:'Annotations' },
                 { k:'sources', l:'Sources & bibliographie' },
                 { k:'history', l:'Historique des versions' },
@@ -60,49 +101,53 @@ export default function ExportCenter() {
             </div>
           </div>
 
-          <button className="btn-primary w-full"><Download size={16}/>Générer le document</button>
+          {error && <div className="card p-3 text-red-700 bg-red-50 text-sm">{error}</div>}
+
+          <button onClick={generate} disabled={submitting || !project} className="btn-primary w-full">
+            {submitting ? <Loader2 size={16} className="animate-spin"/> : <Download size={16}/>} Générer le document
+          </button>
         </div>
 
         <aside className="card p-5">
           <h3 className="font-semibold">Aperçu</h3>
           <div className="mt-3 aspect-[3/4] rounded-lg bg-white border border-sand-200 p-4 text-xs text-sand-700 overflow-hidden">
-            <div className="border-b border-sand-200 pb-2 mb-2">
-              <div className="text-[10px] uppercase tracking-widest text-sand-500">Patrimoine.dz</div>
-              <div className="font-display text-base font-semibold">{p.name}</div>
-              <div className="text-[10px]">{p.region} • {p.period} • {p.type}</div>
-            </div>
-            <div className="space-y-1">
-              <div className="font-medium">Présentation</div>
-              <p className="line-clamp-3">{p.description}</p>
-              <div className="font-medium mt-2">Description architecturale</div>
-              <p className="line-clamp-3">Le bâtiment est organisé autour d'une cour centrale...</p>
-              {opts.images && (
-                <div className="grid grid-cols-2 gap-1 mt-2">
-                  {Array.from({length:4}).map((_,i)=>(
-                    <div key={i} className="h-12 rounded" style={{background:`linear-gradient(135deg, ${p.coverColor}, #3e2417)`}}/>
-                  ))}
+            {p ? (
+              <>
+                <div className="border-b border-sand-200 pb-2 mb-2">
+                  <div className="text-[10px] uppercase tracking-widest text-sand-500">Patrimoine.dz</div>
+                  <div className="font-display text-base font-semibold">{p.name}</div>
+                  <div className="text-[10px]">{p.region} • {p.period} • {p.type}</div>
                 </div>
-              )}
-            </div>
+                <div className="space-y-1">
+                  <div className="font-medium">Description</div>
+                  <p className="line-clamp-6">{p.description || p.summary || '—'}</p>
+                </div>
+              </>
+            ) : (
+              <div className="text-sand-400 text-center mt-10">Sélectionnez un projet</div>
+            )}
           </div>
         </aside>
       </div>
 
       <section className="card p-5">
         <h3 className="font-semibold mb-3">Exports récents</h3>
+        {recent.length === 0 && <div className="text-sand-500 text-sm">Aucun export pour le moment.</div>}
         <ul className="divide-y divide-sand-100">
-          {[
-            { n:'Casbah_Alger_v8.pdf', d:'Hier 16:32', s:'2.4 Mo' },
-            { n:'Timgad_print.pdf', d:'21 avril', s:'1.1 Mo' },
-            { n:'Mzab_archive.zip', d:'15 avril', s:'24 Mo' },
-          ].map((f,i) => (
-            <li key={i} className="py-3 flex items-center gap-3">
+          {recent.map((f) => (
+            <li key={f.id} className="py-3 flex items-center gap-3">
               <FileText size={18} className="text-terracotta-700"/>
               <div className="flex-1">
-                <div className="font-medium text-sm">{f.n}</div>
-                <div className="text-xs text-sand-500">{f.d} • {f.s}</div>
+                <div className="font-medium text-sm">{f.filename || `export_${f.id}.${f.format || 'pdf'}`}</div>
+                <div className="text-xs text-sand-500">
+                  {f.created_at ? new Date(f.created_at).toLocaleString('fr-FR') : ''} • {f.status || ''}
+                </div>
               </div>
-              <button className="btn-secondary text-sm"><Download size={14}/></button>
+              {f.file && (
+                <a href={mediaUrl(f.file)} target="_blank" rel="noreferrer" className="btn-secondary text-sm">
+                  <Download size={14}/>
+                </a>
+              )}
             </li>
           ))}
         </ul>

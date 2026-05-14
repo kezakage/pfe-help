@@ -1,0 +1,100 @@
+# Production-leaning compose. Differences vs docker-compose.yml:
+#   - DEBUG=0 forced via env var (settings then refuses to boot without a
+#     real SECRET_KEY and explicit ALLOWED_HOSTS)
+#   - internal services (db, redis, elasticsearch, minio) are NOT exposed to
+#     the host — only nginx publishes 80/443
+#   - the web/worker/beat containers no longer bind-mount the source tree
+#     (./:/app is dev-only); the image is what runs
+#   - restart: unless-stopped on every service
+#   - nginx terminates TLS and reverse-proxies / → daphne and /static, /media
+#
+# Usage:
+#   cp .env.example .env.prod        # then fill in real values
+#   docker compose -f docker-compose.yml -f docker-compose.prod.yml --env-file .env.prod up -d
+services:
+  db:
+    ports: !reset []   # do NOT publish postgres to the host
+    restart: unless-stopped
+
+  redis:
+    ports: !reset []
+    restart: unless-stopped
+
+  elasticsearch:
+    ports: !reset []
+    restart: unless-stopped
+
+  minio:
+    ports: !reset []
+    restart: unless-stopped
+
+  web:
+    # Image-only: no code bind-mount in prod.
+    volumes: !override
+      - mediadata:/app/media
+      - staticdata:/app/staticfiles
+    ports: !reset []
+    environment:
+      DJANGO_DEBUG: "0"
+      POSTGRES_HOST: db
+      REDIS_URL: redis://redis:6379/0
+      CELERY_BROKER_URL: redis://redis:6379/1
+      CELERY_RESULT_BACKEND: redis://redis:6379/2
+      AWS_S3_ENDPOINT_URL: http://minio:9000
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+    # On boot: collect static into a named volume that nginx mounts read-only.
+    command: >
+      sh -c "python manage.py migrate --noinput &&
+             python manage.py collectstatic --noinput &&
+             daphne -b 0.0.0.0 -p 8000 patrimoinehub.asgi:application"
+    restart: unless-stopped
+
+  worker:
+    volumes: !override
+      - mediadata:/app/media
+    environment:
+      DJANGO_DEBUG: "0"
+      POSTGRES_HOST: db
+      REDIS_URL: redis://redis:6379/0
+      CELERY_BROKER_URL: redis://redis:6379/1
+      CELERY_RESULT_BACKEND: redis://redis:6379/2
+      AWS_S3_ENDPOINT_URL: http://minio:9000
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+    restart: unless-stopped
+
+  beat:
+    volumes: !override []
+    environment:
+      DJANGO_DEBUG: "0"
+      POSTGRES_HOST: db
+      REDIS_URL: redis://redis:6379/0
+      CELERY_BROKER_URL: redis://redis:6379/1
+    restart: unless-stopped
+
+  prometheus:
+    ports: !reset []
+    restart: unless-stopped
+
+  grafana:
+    ports: !reset []
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # nginx — TLS termination + reverse proxy
+  # ---------------------------------------------------------------------------
+  nginx:
+    image: nginx:1.27-alpine
+    depends_on:
+      - web
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./docker/nginx/certs:/etc/nginx/certs:ro
+      - staticdata:/srv/static:ro
+      - mediadata:/srv/media:ro
+    restart: unless-stopped
+
+volumes:
+  staticdata:

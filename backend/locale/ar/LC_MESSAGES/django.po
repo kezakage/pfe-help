@@ -1,0 +1,314 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-09 01:41+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+#: apps/accounts/models.py:20
+msgid "The email must be set"
+msgstr "البريد الإلكتروني مطلوب."
+
+#: apps/accounts/models.py:38
+msgid "Superuser must have is_staff=True."
+msgstr "يجب أن يكون للمستخدم الخارق is_staff=True."
+
+#: apps/accounts/models.py:40
+msgid "Superuser must have is_superuser=True."
+msgstr "يجب أن يكون للمستخدم الخارق is_superuser=True."
+
+#: apps/accounts/models.py:71
+msgid "Administrator"
+msgstr "مسؤول"
+
+#: apps/accounts/models.py:72
+msgid "Validated expert"
+msgstr "خبير معتمد"
+
+#: apps/accounts/models.py:73
+msgid "Guest researcher"
+msgstr "باحث مدعو"
+
+#: apps/accounts/models.py:74
+msgid "Visitor"
+msgstr "زائر"
+
+#: apps/accounts/models.py:77
+msgid "Pending validation"
+msgstr "في انتظار التحقق"
+
+#: apps/accounts/models.py:78
+msgid "Active"
+msgstr "نشط"
+
+#: apps/accounts/models.py:79
+msgid "Rejected"
+msgstr "مرفوض"
+
+#: apps/accounts/models.py:82
+msgid "email address"
+msgstr "البريد الإلكتروني"
+
+#: apps/chatbot/models.py:28
+msgid "Heritage resource"
+msgstr "مورد تراثي"
+
+#: apps/chatbot/models.py:29
+msgid "Project"
+msgstr "مشروع"
+
+#: apps/chatbot/models.py:30
+msgid "Page version"
+msgstr "نسخة الصفحة"
+
+#: apps/chatbot/models.py:95
+msgid "User"
+msgstr "مستخدم"
+
+#: apps/chatbot/models.py:96
+msgid "Assistant"
+msgstr "المساعد"
+
+#: apps/chatbot/models.py:97 apps/notifications/models.py:18
+msgid "System"
+msgstr "النظام"
+
+#: apps/discussions/models.py:15
+msgid "Open"
+msgstr "مفتوح"
+
+#: apps/discussions/models.py:16
+msgid "Resolved"
+msgstr "محلول"
+
+#: apps/discussions/models.py:17 apps/heritage/models.py:81
+msgid "Archived"
+msgstr "مؤرشف"
+
+#: apps/discussions/models.py:20
+msgid "General"
+msgstr "عام"
+
+#: apps/discussions/models.py:21
+msgid "Editorial conflict"
+msgstr "نزاع تحريري"
+
+#: apps/discussions/models.py:22
+msgid "Review"
+msgstr "مراجعة"
+
+#: apps/discussions/models.py:88
+msgid "Approve"
+msgstr "موافقة"
+
+#: apps/discussions/models.py:89
+msgid "Reject"
+msgstr "رفض"
+
+#: apps/discussions/models.py:90
+msgid "Abstain"
+msgstr "امتناع"
+
+#: apps/exports/models.py:16
+msgid "PDF"
+msgstr "PDF"
+
+#: apps/exports/models.py:17
+msgid "ZIP archive"
+msgstr "أرشيف ZIP"
+
+#: apps/exports/models.py:18
+msgid "GeoJSON"
+msgstr "GeoJSON"
+
+#: apps/exports/models.py:19
+msgid "CSV"
+msgstr "CSV"
+
+#: apps/exports/models.py:22 apps/media/models.py:55
+msgid "Pending"
+msgstr "قيد الانتظار"
+
+#: apps/exports/models.py:23
+msgid "Processing"
+msgstr "قيد المعالجة"
+
+#: apps/exports/models.py:24 apps/media/models.py:56
+msgid "Done"
+msgstr "منجز"
+
+#: apps/exports/models.py:25 apps/media/models.py:57
+msgid "Failed"
+msgstr "فشل"
+
+#: apps/heritage/models.py:17
+msgid "Prehistoric"
+msgstr "ما قبل التاريخ"
+
+#: apps/heritage/models.py:18
+msgid "Numidian"
+msgstr "نوميدي"
+
+#: apps/heritage/models.py:19
+msgid "Roman"
+msgstr "روماني"
+
+#: apps/heritage/models.py:20
+msgid "Medieval"
+msgstr "العصور الوسطى"
+
+#: apps/heritage/models.py:21
+msgid "Ottoman"
+msgstr "عثماني"
+
+#: apps/heritage/models.py:22
+msgid "Colonial"
+msgstr "استعماري"
+
+#: apps/heritage/models.py:23
+msgid "Contemporary"
+msgstr "معاصر"
+
+#: apps/heritage/models.py:26
+msgid "Mosque"
+msgstr "مسجد"
+
+#: apps/heritage/models.py:27
+msgid "Medersa"
+msgstr "مدرسة"
+
+#: apps/heritage/models.py:28
+msgid "Casbah / Medina"
+msgstr "قصبة / مدينة"
+
+#: apps/heritage/models.py:29
+msgid "Palace"
+msgstr "قصر"
+
+#: apps/heritage/models.py:30
+msgid "Fortification"
+msgstr "تحصينات"
+
+#: apps/heritage/models.py:31
+msgid "Church"
+msgstr "كنيسة"
+
+#: apps/heritage/models.py:32
+msgid "Synagogue"
+msgstr "كنيس"
+
+#: apps/heritage/models.py:33
+msgid "Mausoleum"
+msgstr "ضريح"
+
+#: apps/heritage/models.py:34
+msgid "Traditional house"
+msgstr "منزل تقليدي"
+
+#: apps/heritage/models.py:35
+msgid "Archaeological site"
+msgstr "موقع أثري"
+
+#: apps/heritage/models.py:36
+msgid "Other"
+msgstr "أخرى"
+
+#: apps/heritage/models.py:39
+msgid "UNESCO World Heritage"
+msgstr "تراث عالمي لليونسكو"
+
+#: apps/heritage/models.py:40
+msgid "National"
+msgstr "وطني"
+
+#: apps/heritage/models.py:41
+msgid "Regional"
+msgstr "إقليمي"
+
+#: apps/heritage/models.py:42
+msgid "Unclassified"
+msgstr "غير مصنف"
+
+#: apps/heritage/models.py:78 apps/pages/models.py:46
+msgid "Draft"
+msgstr "مسودة"
+
+#: apps/heritage/models.py:79
+msgid "In progress"
+msgstr "قيد التنفيذ"
+
+#: apps/heritage/models.py:80 apps/pages/models.py:47
+msgid "Published"
+msgstr "منشور"
+
+#: apps/heritage/models.py:117
+msgid "Project lead"
+msgstr "قائد المشروع"
+
+#: apps/heritage/models.py:118
+msgid "Contributor"
+msgstr "مساهم"
+
+#: apps/heritage/models.py:119
+msgid "Reviewer"
+msgstr "مراجع"
+
+#: apps/media/models.py:18
+msgid "Image"
+msgstr "صورة"
+
+#: apps/media/models.py:19
+msgid "Video"
+msgstr "فيديو"
+
+#: apps/media/models.py:20
+msgid "Document"
+msgstr "وثيقة"
+
+#: apps/media/models.py:21
+msgid "3D model"
+msgstr "نموذج ثلاثي الأبعاد"
+
+#: apps/media/models.py:58
+msgid "Skipped"
+msgstr "تم تخطيه"
+
+#: apps/notifications/models.py:11
+msgid "New discussion message"
+msgstr "رسالة نقاش جديدة"
+
+#: apps/notifications/models.py:12
+msgid "Page version published"
+msgstr "تم نشر نسخة الصفحة"
+
+#: apps/notifications/models.py:13
+msgid "Annotation validated"
+msgstr "تم التحقق من التعليق"
+
+#: apps/notifications/models.py:14
+msgid "Export ready"
+msgstr "التصدير جاهز"
+
+#: apps/notifications/models.py:15
+msgid "Expert account validated"
+msgstr "تم اعتماد حساب الخبير"
+
+#: apps/notifications/models.py:16
+msgid "Expert account rejected"
+msgstr "تم رفض حساب الخبير"
+
+#: apps/notifications/models.py:17
+msgid "Project invitation"
+msgstr "دعوة إلى مشروع"

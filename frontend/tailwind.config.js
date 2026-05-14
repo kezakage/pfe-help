@@ -1,3 +1,5 @@
+import rtlPlugin from 'tailwindcss-rtl'
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
@@ -38,5 +40,9 @@ export default {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    // Adds `start-*` / `end-*` logical utilities (e.g. ms-3 / me-3) that
+    // mirror automatically when `dir="rtl"` is set on the document.
+    rtlPlugin,
+  ],
 }

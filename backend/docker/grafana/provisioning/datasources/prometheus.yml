@@ -1,0 +1,13 @@
+# Auto-wired Prometheus datasource. Grafana picks this up at boot via
+# /etc/grafana/provisioning/datasources/.
+apiVersion: 1
+
+datasources:
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    isDefault: true
+    editable: false
+    jsonData:
+      timeInterval: "15s"
