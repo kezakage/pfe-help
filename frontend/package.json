@@ -24,7 +24,8 @@
     "react-leaflet": "^4.2.1",
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.28.0",
-    "tailwindcss-rtl": "^0.9.0"
+    "tailwindcss-rtl": "^0.9.0",
+    "three": "^0.182.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.9.1",
