@@ -34,7 +34,7 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     env:
-      DJANGO_SECRET_KEY: ci-test-secret-key-32-bytes-minimum-aaaa
+      DJANGO_SECRET_KEY: 636e102350ce89b8fb144916ddacd90a54581fbe00483f4179666fd89c8e946830fe6dd9aa863fa7a1b2328e9e6b2e376ca5
       DJANGO_DEBUG: "0"
       DJANGO_ALLOWED_HOSTS: "*"
       POSTGRES_HOST: localhost
