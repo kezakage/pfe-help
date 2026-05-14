@@ -255,6 +255,11 @@
     "description": "Description",
     "create": "Créer le projet",
     "noProjects": "Aucun projet trouvé.",
+    "deleteResource": {
+      "title": "Supprimer ce patrimoine ?",
+      "body": "Cette action supprimera définitivement la fiche \"{{name}}\".",
+      "confirm": "Supprimer le patrimoine"
+    },
     "tabs": {
       "edit": "Éditeur",
       "media": "Médias & galerie",
